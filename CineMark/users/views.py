@@ -9,7 +9,7 @@ def faz_login(request):
         if form.is_valid():
             user = form.get_user()
             login(request, user)
-            redirect("")
+            return redirect("")
     else: 
         form = AuthenticationForm()
         return render(request, "users/login.html",{"form": form})
@@ -19,9 +19,9 @@ def se_registra(request):
         form = UserCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            redirect("login")
+            return redirect("login")
     else:
-        UserCreationForm()
+        form = UserCreationForm()
         return render(request, "users/registrar.html",{"form": form})
     
 
