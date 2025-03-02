@@ -1,7 +1,7 @@
-# 🎬 Cinermark API
+# 🎬 Cinemark API
 
 ## 📌 Sobre o Projeto
-A **Cinermark API** permite que os usuários pesquisem filmes utilizando a **OMDb API**, adicionem filmes aos seus favoritos e removam-nos quando desejarem. O projeto utiliza **Django** e **Django Template** para gerenciar a interface e a lógica do backend.
+A **Cinemark API** permite que os usuários pesquisem filmes utilizando a **OMDb API**, adicionem filmes aos seus favoritos e removam-nos quando desejarem. O projeto utiliza **Django** e **Django Template** para gerenciar a interface e a lógica do backend.
 
 ---
 
@@ -103,7 +103,7 @@ Caso queira rodar o projeto via Docker:
 
 ### 1️⃣ Construir a imagem Docker
 ```bash
-docker build -t cinermark .
+docker build -t cinemark .
 ```
 
 ### 2️⃣ Rodar o container
