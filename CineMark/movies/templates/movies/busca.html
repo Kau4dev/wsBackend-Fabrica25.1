@@ -1,0 +1,49 @@
+<!-- @format -->
+
+{% extends "base.html" %}{% block content %}
+<h2>Buscar Filmes</h2>
+
+<form method="get">
+  <input
+    type="text"
+    name="entrada"
+    placeholder="Digite o nome do filme"
+    required
+  />
+  <button type="submit">Buscar</button>
+</form>
+
+{% if filmes %}
+<ul>
+  {% for filme in filmes %}
+  <li>
+    <h3>{{ filme.Title }} ({{ filme.Year }})</h3>
+    <img src="{{ filme.Poster }}" alt="{{ filme.Title }}" />
+    <a href="https://www.imdb.com/title/{{ filme.imdbID }}" target="_blank"
+      >Veja no IMDB</a
+    >
+
+    {% if filme.imdbID in filmes_favoritos_ids %}
+    <p>✅ Adicionado aos favoritos</p>
+    <form
+      action="{% url 'movies:remover_filme_favorito' filme.imdbID %}"
+      method="post"
+    >
+      {% csrf_token %}
+      <button type="submit">Remover dos Favoritos</button>
+    </form>
+    {% else %}
+    <form
+      action="{% url 'movies:adicionar_filme_favorito' filme.imdbID %}"
+      method="post"
+    >
+      {% csrf_token %}
+      <button type="submit">Adicionar aos Favoritos</button>
+    </form>
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>Nenhum filme encontrado.</p>
+{% endif %} {% endblock %}

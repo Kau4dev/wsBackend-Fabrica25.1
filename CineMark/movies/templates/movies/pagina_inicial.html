@@ -1,0 +1,28 @@
+<!-- @format -->
+
+{% extends 'base.html' %} {% block content %}
+<h2>Meus Filmes Favoritos</h2>
+
+{% if filmes_favoritos %}
+<ul>
+  {% for filme in filmes_favoritos %}
+  <li>
+    <img
+      src="{{ filme.poster }}"
+      alt="{{ filme.titulo }}"
+      style="width: 50px"
+    />
+    <strong>{{ filme.titulo }}</strong> ({{ filme.ano }})
+    <a href="{% url 'movies:remover_filme_favorito' imdb_id=filme.id_imdb %}"
+      >Remover dos Favoritos</a
+    >
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>Você ainda não tem filmes favoritos.</p>
+{% endif %}
+
+<a href="{% url 'movies:busca' %}">Buscar Filmes</a>
+
+{% endblock %}
